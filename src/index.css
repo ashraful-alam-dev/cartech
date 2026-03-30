@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global overrides */
+body {
+  @apply bg-gray-900 text-black;
+}
+
+input, textarea, select {
+  @apply text-black placeholder-gray-500 bg-white border border-gray-300;
+}
+
+button {
+  @apply text-black bg-cyan-400 hover:bg-cyan-500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-black;
+}

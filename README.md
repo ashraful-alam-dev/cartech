@@ -29,37 +29,36 @@ Node.js (v14 or higher)
 
 npm or yarn
 
-Installation
-Clone the repository:
 
-Bash
-git clone https://github.com/Ashraful-Alam-Dev/cartech.git
+*Installation steps*
 
-cd cartech
+1. Clone the repository
 
-Install dependencies:
+Bash: git clone https://github.com/Ashraful-Alam-Dev/cartech.git
 
-Bash
+2. Install dependencies:
 
-npm install
+Bash: npm install
 
-Run the development server:
+3. Run the development server:
 
-Bash
+Bash: npm run dev
 
-npm run dev
+4. Build for production:
 
-Build for production:
-
-Bash
-npm run build
+Bash: npm run build
 
 📂 Project Structure
 Plaintext
+
 src/
+
 ├── assets/           # Images, Logos, and Product 
+
 ├── components/       # Reusable UI Components (Navbar, Hero, Footer, etc.)
+
 ├── App.jsx           # Main Application Entry and Layout
+
 └── main.jsx          # React DOM Rendering
 
 🎨 Design Identity

@@ -33,8 +33,8 @@ Installation
 Clone the repository:
 
 Bash
-git clone https://github.com/Ashraful-Alam-Dev/cartech-platform.git
-cd cartech-platform
+git clone https://github.com/Ashraful-Alam-Dev/cartech.git
+cd cartech
 Install dependencies:
 
 Bash
@@ -50,7 +50,7 @@ npm run build
 📂 Project Structure
 Plaintext
 src/
-├── assets/           # Images, Logos, and Product Data
+├── assets/           # Images, Logos, and Product 
 ├── components/       # Reusable UI Components (Navbar, Hero, Footer, etc.)
 ├── App.jsx           # Main Application Entry and Layout
 └── main.jsx          # React DOM Rendering

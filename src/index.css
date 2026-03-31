@@ -3,21 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global overrides */
 body {
-  @apply bg-gray-900 text-black;
+  @apply bg-gray-900 text-amber-100;
 }
 
 input, textarea, select {
-  @apply text-black placeholder-gray-500 bg-white border border-gray-300;
+  @apply text-amber-100 placeholder-amber-300/50 bg-gray-800 border border-gray-600;
 }
 
 button {
-  @apply text-black bg-cyan-400 hover:bg-cyan-500;
+  @apply text-gray-900 bg-amber-300 hover:bg-amber-400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply text-black;
+  @apply text-amber-100;
 }
 
 .text-transparent {

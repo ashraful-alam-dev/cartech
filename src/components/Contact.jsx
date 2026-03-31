@@ -1,11 +1,51 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { useState } from 'react'
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setError('')
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError('Please fill in all fields.')
+      return
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.')
+      return
+    }
+
+    setIsSubmitted(true)
+    setFormData({ name: '', email: '', message: '' })
+
+    setTimeout(() => setIsSubmitted(false), 1500)
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+    if (error) setError('') 
+  }
+
   return (
     <section id="contact" className="py-24 bg-gray-900 overflow-hidden">
       <div className="container mx-auto px-6">
-        
-        {/* Header */}
+      
         <div className="text-center mb-16">
           <h2 className="text-amber-500 text-sm md:text-base uppercase tracking-[0.3em] font-bold mb-3">
             Get In Touch
@@ -16,8 +56,7 @@ function Contact() {
         </div>
 
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 bg-gray-800/30 rounded-[2.5rem] border border-gray-700/50 p-8 md:p-12 backdrop-blur-sm shadow-2xl">
-          
-          {/* Left Side: Contact Information */}
+
           <div className="lg:w-1/3 space-y-8">
             <div>
               <h4 className="text-2xl font-bold text-white mb-6">Contact Information</h4>
@@ -59,33 +98,59 @@ function Contact() {
             </div>
           </div>
 
-          {/* Right Side: Form */}
-          <div className="lg:w-2/3">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+          <div className="lg:w-2/3 relative">
+            {isSubmitted && (
+              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gray-900/90 rounded-2xl backdrop-blur-sm animate-in fade-in zoom-in duration-300 text-center p-6">
+                <div className="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center border border-amber-500/50 mb-4">
+                  <CheckCircle2 className="w-8 h-8 text-amber-500" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-2">Message Sent!</h4>
+                <p className="text-gray-400 text-sm">Thank you for reaching out. We will contact you shortly.</p>
+              </div>
+            )}
+
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-gray-500 font-bold ml-1">Full Name</label>
                 <input 
+                  name="name"
                   type="text" 
                   placeholder="Avik Anwar" 
-                  className="w-full p-4 rounded-2xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={`w-full p-4 rounded-2xl bg-gray-900/50 border ${error && !formData.name ? 'border-red-500/50' : 'border-gray-700'} text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all`} 
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-xs uppercase tracking-widest text-gray-500 font-bold ml-1">Email Address</label>
                 <input 
+                  name="email"
                   type="email" 
                   placeholder="avik@eanwar.com" 
-                  className="w-full p-4 rounded-2xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`w-full p-4 rounded-2xl bg-gray-900/50 border ${error && (!formData.email || !validateEmail(formData.email)) ? 'border-red-500/50' : 'border-gray-700'} text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all`} 
                 />
               </div>
               <div className="space-y-2 md:col-span-2">
                 <label className="text-xs uppercase tracking-widest text-gray-500 font-bold ml-1">Your Message</label>
                 <textarea 
+                  name="message"
                   rows="4"
                   placeholder="Tell us about the car you're looking for..." 
-                  className="w-full p-4 rounded-2xl bg-gray-900/50 border border-gray-700 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all resize-none"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={`w-full p-4 rounded-2xl bg-gray-900/50 border ${error && !formData.message ? 'border-red-500/50' : 'border-gray-700'} text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500/50 transition-all resize-none`}
                 ></textarea>
               </div>
+
+              {error && (
+                <div className="md:col-span-2 flex items-center gap-2 text-red-400 text-sm font-medium animate-in slide-in-from-top-1">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>{error}</span>
+                </div>
+              )}
+
               <div className="md:col-span-2 pt-2">
                 <button 
                   type="submit" 

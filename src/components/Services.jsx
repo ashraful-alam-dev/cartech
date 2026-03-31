@@ -27,8 +27,7 @@ function Services() {
   return (
     <section id="services" className="py-24 bg-gray-900">
       <div className="container mx-auto px-6">
-        
-        {/* Header Section */}
+
         <div className="text-center mb-16">
           <h2 className="text-amber-500 text-sm md:text-base uppercase tracking-[0.3em] font-bold mb-3">
             Why Choose Us
@@ -38,17 +37,15 @@ function Services() {
           </h3>
         </div>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               className="group p-8 rounded-3xl bg-gray-800/40 border border-gray-700/50 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-3 relative overflow-hidden"
             >
-              {/* Decorative Background Glow */}
+
               <div className="absolute -right-8 -top-8 w-24 h-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition-colors"></div>
 
-              {/* Icon Container */}
               <div className="mb-6 p-4 rounded-2xl bg-gray-900/50 w-fit border border-gray-700 group-hover:border-amber-500/30 transition-colors">
                 {service.icon}
               </div>
@@ -60,8 +57,6 @@ function Services() {
               <p className="text-gray-400 text-sm leading-relaxed">
                 {service.desc}
               </p>
-
-              {/* Bottom Accent Line */}
               <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-500 w-0 group-hover:w-full"></div>
             </div>
           ))}

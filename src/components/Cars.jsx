@@ -16,8 +16,7 @@ function Cars() {
   return (
     <section id="cars" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4 md:px-6">
-        
-        {/* Header Section */}
+
         <div className="text-center mb-12">
           <h2 className="text-amber-500 text-sm md:text-base uppercase tracking-[0.3em] font-bold mb-3">
             Our Collections
@@ -26,8 +25,7 @@ function Cars() {
             Featured Vehicles
           </h3>
         </div>
-
-        {/* Search & Filter - Redesigned for consistency */}
+        
         <div className="flex flex-col md:flex-row gap-4 mb-12 max-w-4xl mx-auto">
           <div className="relative flex-grow">
             <input
@@ -50,7 +48,6 @@ function Cars() {
           </select>
         </div>
 
-        {/* Car Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCars.map(car => (
             <div
@@ -64,7 +61,7 @@ function Cars() {
                   alt={car.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {/* Price Tag Overlay */}
+
                 <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-amber-500/30">
                   <p className="text-amber-400 font-bold text-sm">{car.price}</p>
                 </div>
@@ -93,14 +90,12 @@ function Cars() {
           ))}
         </div>
 
-        {/* No Results State */}
         {filteredCars.length === 0 && (
           <div className="text-center py-20 text-gray-500">
             No cars found matching your criteria.
           </div>
         )}
 
-        {/* Modal - Specifications Sheet Design */}
         {selectedCar && (
           <div
             className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[100] p-4"
@@ -118,7 +113,6 @@ function Cars() {
               </button>
 
               <div className="flex flex-col lg:flex-row">
-                {/* Modal Left: Image */}
                 <div className="lg:w-1/2 p-6">
                   <img
                     src={selectedCar.image}
@@ -131,7 +125,6 @@ function Cars() {
                   </div>
                 </div>
 
-                {/* Modal Right: Details */}
                 <div className="lg:w-1/2 p-8 bg-gray-800/30">
                   <h3 className="text-3xl font-bold mb-2 text-white">{selectedCar.name}</h3>
                   <p className="text-gray-400 mb-6 leading-relaxed text-sm">

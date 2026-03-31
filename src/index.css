@@ -19,3 +19,9 @@ button {
 h1, h2, h3, h4, h5, h6 {
   @apply text-black;
 }
+
+.text-transparent {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  display: inline-block;
+}

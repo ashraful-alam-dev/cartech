@@ -8,6 +8,8 @@ function Footer() {
 
           <div className="w-full flex flex-col items-center gap-4 text-[10px] uppercase tracking-[0.2em] text-amber-500/50 font-bold">
             <p>© {currentYear} CarTech Automotive Group</p>
+            
+            {/*Dummy button*/}
             <div className="flex gap-6">
               <a href="#" className="hover:text-amber-400 transition-colors">Privacy</a>
               <a href="#" className="hover:text-amber-400 transition-colors">Terms</a>

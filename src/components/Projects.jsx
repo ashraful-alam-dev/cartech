@@ -4,11 +4,13 @@ import projects from '../assets/projects'
 function Projects() {
   const [selectedproject, setSelectedproject] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [showConfirmationMessage, setShowConfirmationMessage] = useState(false)
 
   const filteredprojects = projects.filter(project => {
     return project.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
+  {/*Consistency with Cars section*/}
   return (
     <section id="projects" className="py-20 bg-gray-900 text-amber-50">
       <div className="container mx-auto px-4 md:px-6">
@@ -79,7 +81,20 @@ function Projects() {
                 <ul className="list-disc pl-5 text-amber-50/80 text-xs md:text-sm mb-6 space-y-1">
                   {selectedproject.features.map((feature, idx) => (<li key={idx}>{feature}</li>))}
                 </ul>
-                <button className="w-full py-3 md:py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all mt-auto">Interested</button>
+                
+                <button className="w-full py-3 md:py-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all mt-auto"
+                onClick={() => {
+                      setShowConfirmationMessage(true)
+                      setTimeout(() => setShowConfirmationMessage(false), 2000)
+                  }}>
+                  Interested
+                </button>
+
+                {showConfirmationMessage && (
+                    <p className="mt-3 text-center text-green-400 text-sm font-medium animate-pulse">
+                      Your interest means a lot!
+                    </p>
+                )}
               </div>
             </div>
           </div>

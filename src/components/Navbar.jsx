@@ -3,6 +3,7 @@ import logo from '../assets/images/logo.png'
 
 function Navbar() {
   const [open, setOpen] = useState(false)
+  const [showJoinMessage, setShowJoinMessage] = useState(false)
 
   return (
         <nav className="fixed top-0 left-0 w-full h-16 bg-gray-900/80 backdrop-blur-md border-b border-gray-400 z-50">
@@ -29,8 +30,10 @@ function Navbar() {
           transition-all duration-300 ease-in-out border border-gray-700 md:border-none
           ${open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible md:opacity-100 md:visible translate-y-[-10px] md:translate-y-0'}
         `}>
+
+          {/*Section based button*/}
           <ul className="flex flex-col md:flex-row items-center gap-1 md:gap-6 p-4 md:p-0">
-            {['Home', 'Cars', 'Products', 'Services', 'About'].map((item) => (
+            {['Home', 'Cars', 'Projects', 'Services', 'About'].map((item) => (
               <li key={item} className="w-full md:w-auto">
                 <a 
                   href={`#${item.toLowerCase()}`} 
@@ -42,10 +45,21 @@ function Navbar() {
               </li>
             ))}
             
+            {/*Dummy button to join the community by signup*/}
             <li className="mt-2 md:mt-0 pt-2 md:pt-0 border-t border-gray-700 md:border-none w-full md:w-auto">
-              <button className="w-full md:w-auto bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 px-4 py-2 rounded-lg text-sm font-bold hover:brightness-110 transition-all whitespace-nowrap">
-                Login/Signup
+              <button className="w-full md:w-auto bg-gradient-to-r from-amber-500 to-orange-500 text-gray-900 px-4 py-2 rounded-lg text-sm font-bold hover:brightness-110 transition-all whitespace-nowrap"
+                onClick={() => {
+                    setShowJoinMessage(true)
+                    setTimeout(() => setShowJoinMessage(false), 2000)
+                }}>
+                Join Us
               </button>
+
+              {showJoinMessage && (
+                    <p className="mt-3 text-center text-green-400 text-sm font-medium animate-pulse">
+                      You are part of community now!
+                    </p>
+                  )}
             </li>
           </ul>
         </div>

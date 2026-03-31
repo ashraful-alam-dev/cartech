@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
+{/*Validate form and email*/}
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -98,6 +99,7 @@ function Contact() {
             </div>
           </div>
 
+          {/*Message sending confirmation*/}
           <div className="lg:w-2/3 relative">
             {isSubmitted && (
               <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gray-900/90 rounded-2xl backdrop-blur-sm animate-in fade-in zoom-in duration-300 text-center p-6">

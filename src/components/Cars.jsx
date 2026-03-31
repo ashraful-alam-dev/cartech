@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import cars from '../assets/cars'
 
+{/*Filter & Search*/ }
 function Cars() {
   const [selectedCar, setSelectedCar] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [filterBrand, setFilterBrand] = useState('')
+  const [showInquiryMessage, setShowInquiryMessage] = useState(false)
 
   const filteredCars = cars.filter(car => {
     return (
@@ -25,7 +27,7 @@ function Cars() {
             Featured Vehicles
           </h3>
         </div>
-        
+
         <div className="flex flex-col md:flex-row gap-4 mb-12 max-w-4xl mx-auto">
           <div className="relative flex-grow">
             <input
@@ -77,7 +79,7 @@ function Cars() {
                 </div>
 
                 <button
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold transition-all opacity-90 hover:opacity-100 shadow-lg"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold transition-all opacity-90 hover:opacity-100 hover:from-amber-400 hover:to-orange-500 shadow-lg"
                   onClick={(e) => {
                     e.stopPropagation()
                     setSelectedCar(car)
@@ -91,11 +93,12 @@ function Cars() {
         </div>
 
         {filteredCars.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
+          <div className="text-center py-20 text-gray-200">
             No cars found matching your criteria.
           </div>
         )}
 
+        {/*Separate Card for single Product*/}
         {selectedCar && (
           <div
             className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-[100] p-4"
@@ -120,8 +123,8 @@ function Cars() {
                     className="w-full h-auto rounded-2xl object-cover shadow-lg"
                   />
                   <div className="mt-6 flex items-center gap-4">
-                     <span className="text-3xl font-bold text-white">{selectedCar.price}</span>
-                     <span className="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-xs font-bold uppercase">Ready for Pickup</span>
+                    <span className="text-3xl font-bold text-white">{selectedCar.price}</span>
+                    <span className="px-3 py-1 bg-amber-500/10 text-amber-500 rounded-full text-xs font-bold uppercase">Ready for Pickup</span>
                   </div>
                 </div>
 
@@ -130,7 +133,7 @@ function Cars() {
                   <p className="text-gray-400 mb-6 leading-relaxed text-sm">
                     {selectedCar.description || "Experience the pinnacle of automotive excellence with this premium vehicle."}
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-4 mb-8">
                     {[
                       { label: 'Brand', val: selectedCar.brand },
@@ -147,9 +150,21 @@ function Cars() {
                     ))}
                   </div>
 
-                  <button className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold hover:shadow-amber-500/20 hover:shadow-xl transition-all">
+                  <button
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-gray-900 font-bold hover:shadow-amber-500/20 hover:shadow-xl transition-all"
+                    onClick={() => {
+                      setShowInquiryMessage(true)
+                      setTimeout(() => setShowInquiryMessage(false), 2000)
+                    }}
+                  >
                     Inquire About This Car
                   </button>
+
+                  {showInquiryMessage && (
+                    <p className="mt-3 text-center text-green-400 text-sm font-medium animate-pulse">
+                      Thank you, We will contact you soon!
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

@@ -37,6 +37,7 @@ function Hero() {
           </p>
         </div>
 
+        {/*Clickable button for better ux*/}
         <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
           <a
             href="#cars"

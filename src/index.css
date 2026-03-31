@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/*Global CSS*/
 body {
   @apply bg-gray-900 text-amber-100;
 }

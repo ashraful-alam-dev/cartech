@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
+{/*Re-usable Components*/}
 function App() {
   return (
     <div className="bg-slate-950 text-white overflow-x-hidden">

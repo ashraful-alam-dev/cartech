@@ -62,3 +62,5 @@ Accent Gradient: from-amber-400 to-orange-500
 Borders: border-gray-800 (Subtle) & border-gray-400 (Nav/Footer Divider)
 
 Typography: Bold, uppercase tracking for headers to maintain a luxury automotive feel.
+
+Live Link: https://car-tech-task.vercel.app
